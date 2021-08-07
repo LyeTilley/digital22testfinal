@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import './App.css';
-import Information from './info-json';
 
 
 
@@ -89,13 +88,13 @@ class App extends Component {
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     xhr.onreadystatechange = function() {
-        if(xhr.readyState == 4 && xhr.status == 200) { 
+        if(xhr.readyState == 4 && xhr.status === 200) { 
             alert(xhr.responseText); // Returns a 200 response if the submission is successful.
-        } else if (xhr.readyState == 4 && xhr.status == 400){ 
+        } else if (xhr.readyState == 4 && xhr.status === 400){ 
             alert(xhr.responseText); // Returns a 400 error the submission is rejected.          
-        } else if (xhr.readyState == 4 && xhr.status == 403){ 
+        } else if (xhr.readyState == 4 && xhr.status === 403){ 
             alert(xhr.responseText); // Returns a 403 error if the portal isn't allowed to post submissions.           
-        } else if (xhr.readyState == 4 && xhr.status == 404){ 
+        } else if (xhr.readyState == 4 && xhr.status === 404){ 
             alert(xhr.responseText); //Returns a 404 error if the formGuid isn't found     
         }
        }
