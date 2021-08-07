@@ -39,33 +39,31 @@ class App extends Component {
       default:
         return "NA";
     }
-  }
+}     
 
   onSubmitForm = (event) => {
     const xhr = new XMLHttpRequest();
     const url = 'https://api.hsforms.com/submissions/v3/integration/submit/20536262/f72dc414-cb6a-4c20-a167-0a937c43a925';
 
     const data = {
+
       fields: [
-        {
-          name: "email",
-          value: this.state.email
-        },
+    
         {
           name: "firstname",
-          value: this.state.firstname
+          value: "this.state.firstname"
         },
         {
           name: "lastname",
-          value: this.state.lastname
+          value: "this.state.lastname"
         },
         {
           name: "state",
-          value: this.state.province
+          value: "this.state.province"
         },
         {
           name: "country",
-          value: this.assignRegion(this.state.province),
+          value: "this.assignRegion(this.state.province)",
         }
       ],
       "legalConsentOptions":{ // Include this object when GDPR options are enabled
@@ -134,6 +132,8 @@ class App extends Component {
     );
   }
 }
+
+
 
 
 export default App;

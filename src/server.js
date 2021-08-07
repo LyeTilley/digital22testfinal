@@ -1,9 +1,9 @@
-require('dotenv').config();
-const express = require('express');
-const request = require('request-promise-native');
-const NodeCache = require('node-cache');
-const session = require('express-session');
-const opn = require('open');
+
+import express from 'express';
+import { post, get } from 'request-promise-native';
+import NodeCache from 'node-cache';
+import session from 'express-session';
+import opn from 'open';
 const app = express();
 
 const PORT = 3001;
@@ -123,7 +123,7 @@ app.get('/oauth-callback', async (req, res) => {
 
 const exchangeForTokens = async (userId, exchangeProof) => {
   try {
-    const responseBody = await request.post('https://api.hubapi.com/oauth/v1/token', {
+    const responseBody = await post('https://api.hubapi.com/oauth/v1/token', {
       form: exchangeProof
     });
     // Usually, this token data should be persisted in a database and associated with
@@ -179,7 +179,7 @@ const getContact = async (accessToken) => {
     };
     console.log('===> Replace the following request.get() to test other API calls');
     console.log('===> request.get(\'https://api.hubapi.com/contacts/v1/lists/all/contacts/all?count=1\')');
-    const result = await request.get('https://api.hubapi.com/contacts/v1/lists/all/contacts/all?count=1', {
+    const result = await get('https://api.hubapi.com/contacts/v1/lists/all/contacts/all?count=1', {
       headers: headers
     });
 
