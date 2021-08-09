@@ -43,7 +43,7 @@ class App extends Component {
 
   onSubmitForm = (event) => {
     const xhr = new XMLHttpRequest();
-    const url = 'https://api.hsforms.com/submissions/v3/integration/submit/20536262/f72dc414-cb6a-4c20-a167-0a937c43a925';
+    const url = 'https://api.hsforms.com/submissions/v3/integration/submit/20536262/d27d5d10-68a0-48de-a97c-8405f407221b';
 
     const data = {
 

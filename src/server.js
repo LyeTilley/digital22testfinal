@@ -11,6 +11,25 @@ const PORT = 3001;
 const refreshTokenStore = {};
 const accessTokenCache = new NodeCache({ deleteOnExpire: true });
 
+const hubspot = require('@hubspot/api-client');
+
+const hubspotClient = new hubspot.Client({ apiKey: 'd27d5d10-68a0-48de-a97c-8405f407221b' });
+
+const limit = 10;
+const after = undefined;
+const properties = undefined;
+const associations = undefined;
+const archived = false;
+
+try {
+  const apiResponse = await hubspotClient.crm.contacts.basicApi.getPage(limit, after, properties, associations, archived);
+  console.log(JSON.stringify(apiResponse.body, null, 2));
+} catch (e) {
+  e.message === 'HTTP request failed'
+    ? console.error(JSON.stringify(e.response, null, 2))
+    : console.error(e)
+}
+
 // <!--[if lte IE 8]>
 // <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
 // <![endif]-->
